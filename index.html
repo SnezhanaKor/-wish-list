@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wish-list</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <p class="h1">Список желаний</p>
+        <input
+          type="text"
+          placeholder="Напиши что-нибудь..."
+          v-model="list"
+          @keyup.enter="addList()"
+        />
+      </header>
+      <main>
+        <div v-for="itemList in boxList" class="list">{{itemList}}</div>
+      </main>
+      <footer>&copy; 2021 Все права защищены</footer>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          list: "",
+          boxList: [],
+        },
+        methods: {
+          addList: function () {
+            this.boxList.push(this.list);
+            this.list = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
